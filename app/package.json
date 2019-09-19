@@ -1,0 +1,11 @@
+{
+  "name": "emi",
+  "version": "1.0.0",
+  "description": "umi + electron",
+  "main": "main/index.js",
+  "author": "RomChung",
+  "license": "ISC",
+  "dependencies": {
+    "electron-is": "^3.0.0"
+  }
+}
