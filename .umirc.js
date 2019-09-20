@@ -2,21 +2,29 @@
 // ref: https://umijs.org/config/
 import { join } from "path";
 import slash from 'slash';
+const path = require('path');
+
+import MonacoWebpackPlugin from'monaco-editor-webpack-plugin';
+const MONACO_DIR = path.resolve(__dirname, './node_modules/monaco-editor');
 
 export default {
   treeShaking: true,
   publicPath:'./',
   history: 'hash',
-  routes:[
-    { path:'/', component:'./index.js' },
-  ],
+  // routes:[
+  //   { path:'/', component:'./index.js' },
+  // ],
+  cssLoaderOptions:{
+    localIdentName:'[local]'
+  },
+
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
       dva: true,
-      dynamicImport: { webpackChunkName: true },
-      title: 'emi',
+      dynamicImport: false,
+      title: 'oreo',
       dll: false,
 
       routes: {
@@ -29,8 +37,21 @@ export default {
         ],
       },
     }],
+
+    // new MonacoWebpackPlugin({
+    //   // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+    //   languages: ['json']
+    // })
   ],
+  chainWebpack(config, { webpack }) {
+    config.plugin('monaco-editor').use(MonacoWebpackPlugin, [
+      {
+        // languages: ['yaml']
+      }
+    ])
+  },
   outputPath:'./app/render', // 更改输出目录
+
   externals(context, request, callback) {
     const isDev = process.env.NODE_ENV === 'development';
     let isExternal = false;

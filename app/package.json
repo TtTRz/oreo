@@ -1,7 +1,6 @@
 {
-  "name": "emi",
+  "name": "oreo",
   "version": "1.0.0",
-  "description": "umi + electron",
   "main": "main/index.js",
   "author": "RomChung",
   "license": "ISC",

@@ -1,5 +1,5 @@
 {
-  "name": "emi",
+  "name": "oreo",
   "version": "1.0.0",
   "private": true,
   "main": "./app/main/index.js",
@@ -12,33 +12,47 @@
     "pack-linux": "npm run build:render && npm run rebuild && electron-builder build --linux ",
     "precommit": "lint-staged",
     "test": "umi test",
-    "lint": "eslint --ext .js src mock tests"
+    "lint": "eslint --ext .js src mock tests",
+    "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
     "antd": "^3.19.5",
     "dva": "^2.6.0-beta.6",
-    "electron": "^6.0.9",
+    "electron": "^6.0.10",
+    "monaco-editor": "^0.18.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "terminal-in-react": "^4.3.1"
   },
   "devDependencies": {
-    "babel-eslint": "^9.0.0",
-    "eslint": "^5.4.0",
+    "babel-eslint": "^10.0.3",
+    "css-loader": "^3.2.0",
+    "electron-rebuild": "^1.8.6",
+    "eslint": "^6.4.0",
     "eslint-config-umi": "^1.4.0",
-    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-flowtype": "^4.3.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.11.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.2",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "monaco-editor-webpack-plugin": "^1.7.0",
+    "node-pty": "^0.8.1",
+    "node-sass": "^4.12.0",
+    "react-monaco-editor": "^0.31.0",
     "react-test-renderer": "^16.7.0",
+    "react-xterm": "^2.0.4",
+    "sass-loader": "^8.0.0",
     "slash": "^3.0.0",
+    "style-loader": "^1.0.0",
+    "terminal-in-react-pseudo-file-system-plugin": "^3.0.0",
     "umi": "^2.7.7",
-    "umi-plugin-react": "^1.8.4"
+    "umi-plugin-react": "^1.8.4",
+    "xterm": "^4.0.1"
   },
   "build": {
-    "productName": "emi",
-    "appId": "emi",
+    "productName": "oreo",
+    "appId": "oreo",
     "directories": {
       "output": "OutputApp"
     },
@@ -49,12 +63,6 @@
       ],
       "category": "Development"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
   },
   "engines": {
     "node": ">=8.0.0"
